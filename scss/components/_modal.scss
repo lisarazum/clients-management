@@ -1,0 +1,380 @@
+.modal {
+  position: fixed;
+  top: 20%;
+  left: calc((100% - 450px) / 2);
+  max-height: 600px;
+  overflow-y: scroll;
+  background-color: $white-color;
+
+  @include mobile {
+    top: 10%;
+    left: calc((100% - 300px) / 2);
+    max-height: 450px;
+    width: 300px;
+  }
+
+  &__top {
+    position: relative;
+  }
+
+  &__client {
+    position: relative;
+    width: 450px;
+    background-color: $white-color;
+
+    @include mobile {
+      width: 300px;
+    }
+  }
+
+  & .contacts {
+    padding-bottom: 20px;
+    background-color: transparentize($grey-color, 0.8);
+    &__block {
+      position: relative;
+      display: flex;
+      margin-bottom: 15px;
+      height: 37px;
+
+      @include mobile {
+        margin-bottom: 10px;
+      }
+
+      & .contacts__select,
+      & .contacts__change-select {
+        padding: 10px 12px;
+        font-size: 12px;
+        color: $dark-color;
+        background-color: #E7E5EB;
+        border: 1px solid $grey-color;
+        outline: none;
+      }
+
+      & .contacts__input {
+        flex-grow: 1;
+        padding: 8px 12px;
+        font-size: 14px;
+        font-weight: 600;
+        color: $dark-color;
+        border: 1px solid $grey-color;
+        border-right: none;
+        border-left: none;
+        background-color: transparent;
+        outline: none;
+
+        @include mobile {
+          width: calc(110% - 137px);
+        }
+
+        &::placeholder {
+          font-weight: 400;
+          color: $grey-color;
+        }
+      }
+
+      & .contacts__delete {
+        width: 27px;
+        background-color: #E7E5EB;
+        border: 1px solid $grey-color;
+        &-svg {
+          width: 12px;
+          height: 12px;
+          fill: $grey-color;
+        }
+      }
+
+      & span.invalid-text {
+        position: absolute;
+        top: 0;
+        right: 30px;
+        font-size: 12px;
+        color: #F06A4D;
+      }
+    }
+  }
+
+  &__bottom {
+    background-color: $white-color;
+  }
+
+  &-form {
+    position: relative;
+    width: 450px;
+    background-color: $white-color;
+
+    @include mobile {
+      width: 300px;
+    }
+
+    &__container {
+      margin: 0 auto;
+      padding: 24px 30px 13px;
+
+      @include mobile {
+        padding: 14px;
+      }
+    }
+
+    &__close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      z-index: 1;
+
+      & svg {
+        width: 21px;
+        height: 21px;
+        fill: $txt-grey-color;
+        transition: all .3s ease;
+
+        @include mobile {
+          width: 16px;
+          height: 16px;
+        }
+      }
+
+      &:hover svg {
+        fill: $purple-color;
+      }
+    }
+
+    &__title {
+      margin-top: 0;
+      margin-bottom: 32px;
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1;
+      color: $dark-color;
+
+      @include mobile {
+        margin-bottom: 22px;
+        font-size: 16px;
+      }
+    }
+
+    & .contacts {
+      padding-bottom: 20px;
+      background-color: transparentize($grey-color, 0.8);
+    }
+
+    &__block {
+      position: relative;
+      @include mb(32px);
+      width: 100%;
+      min-height: 25px;
+
+      @include mobile {
+        @include mb(18px);
+      }
+    }
+
+    &__label {
+      & .label-text {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        min-height: 25px;
+        font-size: 14px;
+        color: $txt-grey-color;
+        z-index: 1;
+        transition: all .3s ease;
+
+        & span {
+          font-weight: 800;
+          color: $purple-color;
+        }
+      }
+    }
+
+    &__input {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      width: 100%;
+      height: 25px;
+      font-size: 14px;
+      font-weight: 600;
+      color: $dark-color;
+      background-color: transparent;
+      border-bottom: 1px solid $grey-color;
+      z-index: 2;
+
+      &:focus,
+      &:not(:placeholder-shown) {
+        outline: none;
+
+        & ~ .label-text {
+          top: -11px;
+          font-size: 10px;
+        }
+      }
+
+      &.is-invalid {
+        border-bottom-color: #F06A4D;
+      }
+
+      & ~ span.invalid-text {
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: 12px;
+        color: #F06A4D;
+      }
+    }
+
+    &__add-contact {
+      display: flex;
+      margin: 0 auto;
+      padding: 8px 0;
+      font-size: 14px;
+      font-weight: 700;
+      color: $dark-color;
+      transition: all .3s ease;
+
+      &-svg {
+        margin-right: 8px;
+        width: 16px;
+        height: 16px;
+        fill: $purple-color;
+        border: 1px solid transparent;
+        border-radius: 50%;
+        transition: all .3s ease;
+      }
+
+      &:hover {
+        color: $purple-color;
+
+        & .modal-form__add-contact-svg {
+          fill: $white-color;
+          background-color: $purple-color;
+        }
+      }
+    }
+
+    &__save {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 7px;
+      padding: 12px 35px;
+      max-width: 147px;
+      height: 44px;
+      background-color: rgb(152, 115, 255, .8);
+      color: $white-color;
+      font-size: 14px;
+      font-weight: 600;
+      transition: all .3s ease;
+
+      &:focus,
+      &:active {
+        background-color: $purple-color;
+      }
+
+      &:hover {
+        background-color: rgb(152, 115, 255, .6);
+      }
+
+      &:disabled {
+        background-color: $grey-color;
+      }
+    }
+  
+    &__cancel {
+      display: flex;
+      margin: 0 auto;
+      font-size: 12px;
+      color: $dark-color;
+      text-decoration: underline;
+      transition: all .3s ease;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+// new-client form
+
+#new-client {
+  opacity: 0;
+  visibility: hidden;
+  z-index: -1;
+  transform: scale(0);
+  transition: all .3s ease;
+
+  & .modal-form {
+    min-height: 400px;
+  }
+
+  &.is-active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 11;
+    transform: scale(1);
+  }
+}
+
+// delete-form
+#delete-client {
+  opacity: 0;
+  visibility: hidden;
+  z-index: -1;
+  transform: scale(0);
+  transition: all .3s ease;
+
+  & .modal-form {
+    min-height: 215px;
+
+    &__container {
+      padding: 30px 30px 20px;
+    }
+
+    &__title {
+      margin-bottom: 14px;
+      text-align: center;
+    }
+
+    &__text {
+      margin-bottom: 25px;
+      padding: 0 57px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 400;
+      color: $dark-color;
+    }
+  }
+
+  &.is-active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 11;
+    transform: scale(1);
+  }
+}
+
+// change-form
+#change-client {
+  background-color: $white-color;
+  opacity: 0;
+  visibility: hidden;
+  z-index: -1;
+  transform: scale(0);
+  transition: all .3s ease;
+
+  & .modal-form {
+    &__title-ID {
+      color: #B0B0B0;
+      font-size: 12px;
+    }
+  }
+
+  &.is-active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 11;
+    transform: scale(1);
+  }
+}

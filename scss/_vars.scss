@@ -1,0 +1,16 @@
+:root {
+  --font-family: "Open Sans", sans-serif;
+  --content-width: 1320px;
+  --container-offset: 15px;
+  --container-width: calc(var(--content-width) + (var(--container-offset) * 2));
+}
+
+$white-color: #fff;
+$grey-color: #C8C5D1;
+$txt-grey-color: #B0B0B0;
+$purple-color: #9873FF;
+$green-color: #34C759;
+$orange-color: #E6B127;
+$red-color: #F06A4D;
+$dark-color: #333333;
+$black-color: #000;

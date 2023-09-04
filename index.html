@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ru" class="page">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="favicon.svg" type="image/x-icon">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color" content="#e5e5e5">
+  <title>Skillbus | CRM</title>
+  <link rel="stylesheet" href="./css/vendor.css">
+  <link rel="stylesheet" href="./css/main.css">
+
+  <script defer src="./js/inputmask.min.js"></script>
+  <script defer src="./js/main.js" type="module"></script>
+</head>
+
+
+<body class="page__body">
+  <div class="site-container">
+    <header class="header">
+      <div class="container">
+        <div class="header__block">
+          <a href="./index.html" class="header__logo-link">
+            <img src="./img/logo.svg" alt="Skillbus" class="header__logo">
+          </a>
+          <input type="text" class="input-reset header__search" id="headerSearch" placeholder="Введите Запрос">
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="main-section">
+        <div class="container">
+          <h1 class="title">Клиенты</h1>
+          <div class="table">
+            <ul class="list-reset table-header">
+              <li class="table-header__item">
+                <button class="btn-reset table-header__btn active" id="sortId">
+                  ID 
+                  <svg class="arrow down">
+                    <use xlink:href="./img/sprite.svg#arrow_up"></use>
+                  </svg>
+                </button>
+              </li>
+              <li class="table-header__item">
+                <button class="btn-reset table-header__btn" id="sortName">
+                  Фамилия Имя Отчество 
+                  <svg class="arrow">
+                    <use xlink:href="./img/sprite.svg#arrow_up"></use>
+                  </svg>
+                  <span class="table-header__btn-initials">А-Я</span>
+                </button>
+              </li>
+              <li class="table-header__item">
+                <button class="btn-reset table-header__btn short" id="sortCreate">
+                  Дата и время создания
+                  <svg class="arrow">
+                    <use xlink:href="./img/sprite.svg#arrow_up"></use>
+                  </svg>
+                </button>
+              </li>
+              <li class="table-header__item">
+                <button class="btn-reset table-header__btn short" id="sortChange">
+                  Последние изменения
+                  <svg class="arrow">
+                    <use xlink:href="./img/sprite.svg#arrow_up"></use>
+                  </svg>
+                </button>
+              </li>
+              <li class="table-header__item">
+                <button class="btn-reset table-header__btn">
+                  Контакты
+                </button>   
+              </li>
+              <li class="table-header__item">
+                <button class="btn-reset table-header__btn">
+                  Действия
+                </button>
+              </li>
+            </ul>
+            <div class="table-block"></div>
+
+          </div>
+          <button class="btn-reset main-section__btn">
+            <svg class="main-section__btn-svg">
+              <use xlink:href="./img/sprite.svg#add_client"></use>
+            </svg>
+            Добавить клиента
+          </button>
+        </div>
+      </section>
+    </main>
+    <div class="overlay" data-menu-overlay></div>
+
+    <!-- модалка нового окна -->
+    <div class="modal" id="new-client">
+      <div class="modal__top">
+        <button class="btn-reset modal-form__close newClient-close">
+          <svg>
+            <use xlink:href="img/sprite.svg#close"></use>
+          </svg>
+        </button>
+      </div>
+      <div class="modal__client">
+        <div class="modal-form__container">
+          <h2 class="modal-form__title">Новый клиент</h2>
+          <form class="new-client">
+            <div class="modal-form__block">
+              <label class="new-client__label modal-form__label">
+                <input type="text" name="surname" placeholder=" " id="formSurname" class="input-reset modal-form__input new-client__input" required>
+                <span class="label-text">Фамилия<span>*</span></span>
+              </label>
+            </div>
+            <div class="modal-form__block">
+              <label class="new-client__label modal-form__label">
+                <input type="text" name="name" placeholder=" " id="formName" class="input-reset modal-form__input new-client__input" required>
+                <span class="label-text">Имя<span>*</span></span>
+              </label>
+            </div>
+            <div class="modal-form__block">
+              <label class="new-client__label modal-form__label"> 
+                <input type="text" name="patronomic" placeholder=" " id="formLastname" class="input-reset modal-form__input new-client__input">
+                <span class="label-text">Отчество<span>*</span></span>
+              </label>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="modal__contacts contacts">
+        <div class="modal-form__container contacts__container">
+          <div class="contacts__block">
+            <select name="contactType" class="contacts__select">
+              <option value="telephone">Телефон</option>
+              <option value="dop telephone" >Доп. телефон</option>
+              <option value="email">Email</option>
+              <option value="vk">Vk</option>
+              <option value="facebook">Facebook</option>
+            </select>
+            <input type="text" class="contacts__input new-client__input" placeholder="Введите данные контакта">
+            <button class="btn-reset contacts__delete">
+              <svg class="contacts__delete-svg">
+                <use xlink:href="./img/sprite.svg#tinyClose"></use>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <button class="btn-reset modal-form__add-contact">
+          <svg class="modal-form__add-contact-svg">
+            <use xlink:href="img/sprite.svg#circle-add"></use>
+          </svg>
+          Добавить контакт
+        </button>
+      </div>
+      <div class="modal__bottom">
+        <div class="modal-form__container">
+          <button type="submit" class="btn-reset modal-form__save newClient-save">
+            Сохранить
+          </button>
+          <button class="btn-reset modal-form__cancel newClient-cancel">
+            Отмена
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- модалка удаления контакта -->
+    <div class="modal" id="delete-client">
+      <div class="modal-form">
+        <button class="btn-reset modal-form__close deleteClient-close">
+          <svg>
+            <use xlink:href="img/sprite.svg#close"></use>
+          </svg>
+        </button>
+        <div class="modal-form__container">
+          <h2 class="modal-form__title">Удалить клиента</h2>
+          <p class="modal-form__text">Вы действительно хотите удалить данного клиента?</p>
+          <button class="btn-reset modal-form__save deleteClient-delete">
+            Удалить
+          </button>
+          <button class="btn-reset modal-form__cancel deleteClient-cancel">
+            Отмена
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- форма изменения контакта -->
+    <div class="modal" id="change-client">
+      
+    </div>
+  </div>    
+</body>
+
+</html>

@@ -1,0 +1,9 @@
+// базовые подключения
+@import "vars";
+@import "mixins";
+@import "settings";
+
+// подключения компонентов страницы
+@import "./components/header";
+@import "./components/main";
+@import "./components/modal";
